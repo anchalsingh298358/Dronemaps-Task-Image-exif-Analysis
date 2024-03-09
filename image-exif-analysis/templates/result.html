@@ -14,10 +14,10 @@
         {% if violation_flag %}
             <p style="color: red;">Potential violation detected!</p>
         {% else %}
-            <p>No violation detected</p>
+            <p style="color: green;">No violation detected</p>
         {% endif %}
         <h3>Metadata:</h3>
-        <ul>
+        <ul class="metadata">
             {% for key, value in metadata.items() %}
                 <li>{{ key }}: {{ value }}</li>
             {% endfor %}

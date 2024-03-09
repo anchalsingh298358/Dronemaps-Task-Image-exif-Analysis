@@ -13,6 +13,14 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+# get pixels per meter from resolution dpi
+def dpi_to_pixels_per_meter(dpi):
+    return dpi * (1 / 0.0254)
+# get height in meters from height in pixels
+def get_height_in_meters(height_pixels, resolution_dpi):
+    resolution_pixels_per_meter = dpi_to_pixels_per_meter(resolution_dpi)
+    height_meters = height_pixels / resolution_pixels_per_meter
+    return height_meters
 
 def analyze_image(image_path):
     global metadata
@@ -24,9 +32,12 @@ def analyze_image(image_path):
             if exif_data:
                 for tag, value in exif_data.items():
                     metadata[tag] = value
-            height = metadata.get(256, 0)
-            speed = metadata.get(106, 0)  # Assuming speed is stored in tag 106, adjust according to your image data
-            violation_flag = height > 60 or speed > 5
+            height_in_pixels = metadata.get(40963, 0)
+            resolution_dpi= metadata.get(282,0) 
+            height_in_meters=get_height_in_meters(height_in_pixels,resolution_dpi)
+            speed = metadata.get(37377, 0)
+
+            violation_flag = height_in_meters > 60 or speed > 5
             return metadata, violation_flag
     except Exception as e:
         print("Error analyzing image:", e)
