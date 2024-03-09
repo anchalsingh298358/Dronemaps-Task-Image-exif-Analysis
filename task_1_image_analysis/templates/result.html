@@ -1,0 +1,28 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Analysis Result</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Analysis Result</h2>
+        <p>Uploaded Image: {{ filename }}</p>
+        {% if violation_flag %}
+            <p style="color: red;">Potential violation detected!</p>
+        {% else %}
+            <p>No violation detected</p>
+        {% endif %}
+        <h3>Metadata:</h3>
+        <ul>
+            {% for key, value in metadata.items() %}
+                <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
+        <a href="/download_report/{{ filename }}">Download Report</a>
+    </div>
+</body>
+</html>
