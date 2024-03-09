@@ -60,6 +60,6 @@ Open a web browser and navigate to <a>http://localhost:5000</a> to access the ap
 ## Dependencies
     Flask
     Pillow
-    ReportLab
+    CSV
 ## Contributing
 Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
