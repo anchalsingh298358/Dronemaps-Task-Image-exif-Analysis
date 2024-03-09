@@ -54,7 +54,7 @@ To run the application locally, follow these steps:
 4. Run the Flask application:
     ```bash
     python app.py
-    ``
+    
 Open a web browser and navigate to <a>http://localhost:5000</a> to access the application.
    
 ## Dependencies
