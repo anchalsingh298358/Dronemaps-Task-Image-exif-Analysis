@@ -46,14 +46,17 @@ To run the application locally, follow these steps:
 2. Navigate to the project directory:
     ```bash 
     cd image-exif-analysis
-    Install the required dependencies:
+    ```
+3. Install the required dependencies:
+   ```bash
     pip install -r requirements.txt
     ```
-3. Run the Flask application:
+4. Run the Flask application:
     ```bash
     python app.py
-    Open a web browser and navigate to http://localhost:5000 to access the application.
-    ```
+    ``
+Open a web browser and navigate to <a>http://localhost:5000</a> to access the application.
+   
 ## Dependencies
     Flask
     Pillow
